@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet"/>
+{% block title -%}
+{% if title -%}
+        <title>Ижпромтранс18 - {{title}}</title>
+{% else -%}
+        <title>Ижпромтранс18</title>
+{% endif -%}     
+{% endblock -%}        
+</head>
+<body>
+{% block content -%}
+        {% block mainmenu -%}
+<ul class="mainmenu">
+        {% for m in menu -%}
+<li><a href="{{m.url}}">{{m.title}}</a></li>
+        {% endfor -%}
+</ul>
+        {% endblock mainmenu -%}
+<div class="clear"></div>
+<div class="content"></div>
+        {% if title -%}
+<h1>{{title}}</h1>
+        {% else -%}
+<h1>Ижпромтранс18</h1>
+        {% endif -%}
+{% endblock -%} 
+</body>
+</html>

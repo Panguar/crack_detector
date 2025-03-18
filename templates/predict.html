@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crack Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        img {
+            width: 500px;  /* Растягиваем до 500px по ширине */
+            height: 500px; /* Растягиваем до 500px по высоте */
+            object-fit: cover; /* Опционально: сохраняет пропорции, обрезая лишнее */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crack Detector</h1>
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <br>
+        <button type="submit">Upload and Predict</button>
+    </form>
+    <!-- Placeholder для результата -->
+    {% if result %}
+        <div class="result">{{ result }}</div>
+        {% if heatmap %}
+            <img src="data:image/png;base64,{{ heatmap }}" alt="Heatmap">
+        {% endif %}
+    {% endif %}
+</body>
+</html>
